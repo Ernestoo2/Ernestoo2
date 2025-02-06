@@ -3,6 +3,16 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-ernestoo2-blue)](https://www.linkedin.com/in/ernestoo2)
 [![Portfolio](https://img.shields.io/badge/Portfolio-Visit%20Now-green)](https://catfish-app-phi.vercel.app/)
 
+
+### 📊 GitHub Stats
+![Your GitHub stats](https://github-readme-stats.vercel.app/api?username=Ernestoo2&show_icons=true&theme=radical)
+
+### 🐍 Contribution Graph
+![Snake animation](https://github.com/{your-username}/{your-username}/blob/output/github-contribution-grid-snake.svg)
+
+### 👨‍💻 Top Languages
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Ernestoo2&layout=compact&theme=radical)
+
 ## 🚀 Front-End Developer | React Specialist | UI Enthusiast
 
 With 4 years of experience in front-end development, I specialize in creating responsive and user-friendly web applications. I'm passionate about writing clean code and creating intuitive user experiences.
