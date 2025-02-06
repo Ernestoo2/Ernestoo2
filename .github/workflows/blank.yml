@@ -1,0 +1,63 @@
+name: GitHub Profile Stats
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs at 00:00 UTC every day
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  update-readme:
+    name: Update Profile README
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout repository
+      - uses: actions/checkout@v4
+
+      # Update GitHub Stats
+      - name: GitHub Stats Card
+        uses: anuraghazra/github-readme-stats@master
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          username: Ernestoo2
+          show_icons: true
+          theme: radical
+          
+      # Generate snake animation
+      - name: Generate Snake Animation
+        uses: Platane/snk@master
+        with:
+          github_user_name: Ernestoo2
+          svg_out_path: dist/github-contribution-grid-snake.svg
+          
+      # Update activity stats
+      - name: Profile Activity
+        uses: jamesgeorge007/github-activity-readme@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      # Language stats
+      - name: Top Languages
+        uses: anuraghazra/github-readme-stats@master
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          username: Ernestoo2
+          layout: compact
+          hide_title: true
+          hide_border: true
+          theme: radical
+          
+      # Commit and push changes
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git diff-index --quiet HEAD || git commit -m "Update GitHub profile stats"
+          
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
