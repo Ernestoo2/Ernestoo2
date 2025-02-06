@@ -58,8 +58,8 @@ const skills = {
     </td>
     <td width="33%" align="left">
       <h3>Netflix Clone</h3>
-<!--       <a href="https://skillup-imo-3ni4.vercel.app/"> -->
-        <img src="netflix-banner.svg" alt="Netflix Clone" />
+      <a href="https://skillup-imo-3ni4.vercel.app/">
+<!--         <img src="netflix-banner.svg" alt="Netflix Clone" /> -->
       </a>
       <p>
           A responsive Netflix interface recreation
