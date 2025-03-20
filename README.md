@@ -21,9 +21,9 @@ With 4 years of experience in front-end development, I specialize in creating re
 
 ```javascript
 const skills = {
-    frontend: ['React.js', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS'],
-    backend: ['Node.js', 'MongoDB'],
-    tools: ['Git', 'VS Code', 'Figma'],
+    frontend: ['React.js', 'Typescript', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS'],
+    backend: ['Node.js', 'MongoDB', 'express'],
+    tools: ['Git', 'VS Code', 'Figma', 'gitlence'],
     architecture: ['REST APIs', 'Responsive Design'],
 }
 ```
