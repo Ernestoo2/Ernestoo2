@@ -86,7 +86,7 @@ const skills = {
 ### 🤝 Let's Connect!
 - 📧 Email: ezechibuezeernest@gmail.com
 - 💼 LinkedIn: [Eze Ernest Chibueze](https://www.linkedin.com/in/ernestoo2)
-- 🌐 Portfolio: [View My Work](https://catfish-app-phi.vercel.app/)
+- 🌐 Portfolio: [View My Work](https://ernest-portfolio-pi.vercel.app/)
 
 ---
 ⭐️ From [Ernestoo2](https://github.com/Ernestoo2)
