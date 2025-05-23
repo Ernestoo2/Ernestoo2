@@ -5,70 +5,84 @@ on:
     - cron: '0 0 * * *'  # Runs at 00:00 UTC every day
   push:
     branches: [ "main" ]
-  workflow_dispatch:  # Allows manual trigger
+    paths:
+      - 'README.md'
+      - '.github/workflows/**'
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+  repository_dispatch:
+    types: [update-stats]
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  DEBUG: 'true'
 
 permissions:
   contents: write
-  packages: read
+  pull-requests: write
 
 jobs:
   update-readme:
     name: Update Profile README
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     
     steps:
-      - uses: actions/checkout@v4
-      
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
       - name: Generate GitHub Stats Images
+        id: generate-stats
+        continue-on-error: true
         run: |
-          curl -L "https://github-readme-stats.vercel.app/api?username=Ernestoo2&show_icons=true&theme=radical" -o stats.svg
-          curl -L "https://github-readme-stats.vercel.app/api/top-langs/?username=Ernestoo2&layout=compact&theme=radical" -o langs.svg
+          echo "::group::Downloading GitHub Stats"
+          mkdir -p images
+          
+          # Download with retry logic
+          for i in {1..3}; do
+            if curl -L --fail "https://github-readme-stats.vercel.app/api?username=Ernestoo2&show_icons=true&theme=radical" -o images/stats.svg && \
+               curl -L --fail "https://github-readme-stats.vercel.app/api/top-langs/?username=Ernestoo2&layout=compact&theme=radical" -o images/langs.svg; then
+              echo "status=success" >> $GITHUB_OUTPUT
+              break
+            else
+              echo "Attempt $i failed, retrying..."
+              sleep 5
+            fi
+          done
+          echo "::endgroup::"
+
+      - name: Update README
+        if: steps.generate-stats.outputs.status == 'success'
+        run: |
+          echo "::group::Updating README with new stats"
+          # Update image paths in README if needed
+          if [[ -f "images/stats.svg" && -f "images/langs.svg" ]]; then
+            sed -i 's#(https://github-readme-stats.vercel.app/api?username=Ernestoo2.*theme=radical)#(./images/stats.svg)#g' README.md
+            sed -i 's#(https://github-readme-stats.vercel.app/api/top-langs/?username=Ernestoo2.*theme=radical)#(./images/langs.svg)#g' README.md
+          else
+            echo "::error::Stats images not generated correctly"
+            exit 1
+          fi
+          echo "::endgroup::"
           
       - name: Commit and push if changed
+        if: success()
         run: |
-          git config --global user.email "ezechibuezeernest@gmail.com"
-          git config --global user.name "Eze Ernest Chibueze"
-          git add stats.svg langs.svg
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update GitHub stats" && git push)# Update GitHub Stats
-      - name: Generate GitHub Stats
-        run: |
-          curl -X GET "https://github-readme-stats.vercel.app/api?username=Ernestoo2&show_icons=true&theme=radical" -o stats.svg
-          curl -X GET "https://github-readme-stats.vercel.app/api/top-langs/?username=Ernestoo2&layout=compact&theme=radical" -o languages.svg
-          
-      # Generate snake animation
-      - name: Generate Snake Animation
-        uses: Platane/snk@master
-        with:
-          github_user_name: Ernestoo2
-          svg_out_path: dist/github-contribution-grid-snake.svg
-          
-      # Update activity stats
-      - name: Profile Activity
-        uses: jamesgeorge007/github-activity-readme@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GIT_STATS }}
-          
-      # Language stats
-      - name: Top Languages
-        uses: anuraghazra/github-readme-stats@master
-        with:
-          GITHUB_TOKEN: ${{ secrets.GIT_STATS }}
-          username: Ernestoo2
-          layout: compact
-          hide_title: true
-          hide_border: true
-          theme: radical
-          
-      # Commit and push changes
-      - name: Commit files
-        run: |
+          echo "::group::Committing changes"
           git config --local user.email "ezechibuezeernest@gmail.com"
           git config --local user.name "Eze Ernest Chibueze"
-          git add -A
-          git diff-index --quiet HEAD || git commit -m "Update GitHub profile stats"
           
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GIT_STATS }}
-          branch: main
+          git add images/ README.md
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update GitHub stats"
+            git push || {
+              echo "::error::Failed to push changes"
+              exit 1
+            }
+          fi
+          echo "::endgroup::"

@@ -1,21 +1,22 @@
 {
   "name": "ernestoo2",
   "version": "1.0.0",
-  "description": "<p align=\"center\">\r   <a href=\"https://www.linkedin.com/in/ernestoo2\">\r     <img src=\"https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin\" alt=\"LinkedIn\" />\r   </a>\r   <a href=\"https://catfish-app-phi.vercel.app/\">\r     <img src=\"https://img.shields.io/badge/Portfolio-Visit-green?style=for-the-badge&logo=google-chrome\" alt=\"Portfolio\" />\r   </a>\r   <a href=\"mailto:ezechibuezeernest@gmail.com\">\r     <img src=\"https://img.shields.io/badge/Email-Contact-red?style=for-the-badge&logo=gmail\" alt=\"Email\" />\r   </a>\r </p>",
-  "main": "index.js",
+  "description": "Eze Ernest Chibueze's GitHub Profile",
+  "type": "module",
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch",
     "lint": "eslint . --cache",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "stats": "gh workflow run profile-readme-stats.yml"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Ernestoo2/Ernestoo2.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
+  "author": "Eze Ernest Chibueze",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Ernestoo2/Ernestoo2/issues"
   },

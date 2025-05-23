@@ -1,5 +1,8 @@
 # Hi there! 👋 I'm Eze Ernest Chibueze
 
+![Profile Stats](https://github.com/Ernestoo2/Ernestoo2/workflows/GitHub%20Profile%20Stats/badge.svg)
+![Quality Checks](https://github.com/Ernestoo2/Ernestoo2/workflows/Quality%20Checks/badge.svg)
+
 <p align="center">
   <a href="https://www.linkedin.com/in/ernestoo2">
     <img src="https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin" alt="LinkedIn" />
