@@ -4,7 +4,7 @@
   <a href="https://www.linkedin.com/in/ernestoo2">
     <img src="https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin" alt="LinkedIn" />
   </a>
-  <a href="https://catfish-app-phi.vercel.app/">
+  <a href="https://ernest-portfolio-pi.vercel.app/">
     <img src="https://img.shields.io/badge/Portfolio-Visit-green?style=for-the-badge&logo=google-chrome" alt="Portfolio" />
   </a>
   <a href="mailto:ezechibuezeernest@gmail.com">
@@ -21,8 +21,8 @@ With 4 years of experience in front-end development, I specialize in creating re
 
 ```javascript
 const skills = {
-    frontend: ['React.js', 'Typescript', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS'],
-    backend: ['Node.js', 'MongoDB', 'express', 'Mongoose', 'Prisma'],
+    frontend: ['React.js', 'Nextjs', 'Typescript', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS'],
+    backend: ['Node.js', 'MongoDB', 'express', 'zustand', 'Mongoose', 'Prisma'],
     tools: ['Git', 'VS Code', 'Figma', 'gitlence'],
     architecture: ['REST APIs', 'Responsive Design'],
 }
