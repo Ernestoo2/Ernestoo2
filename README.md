@@ -34,7 +34,7 @@ const skills = {
   <tr>
     <td width="33%" align="left">
       <h3>Futo 1K</h3>
-      <a href="https://github.com/yourusername/futo-1k">
+      <a href="https://github.com/Ernestoo2/futoonek.git">
 <!--         <img src="futo-1k-banner.svg" alt="Futo 1K" /> -->
       </a>
       <p>
