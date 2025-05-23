@@ -76,9 +76,9 @@ const skills = {
   
 ### 📈 GitHub Stats
 
-![Your GitHub stats](https://github-readme-stats.vercel.app/api?username=Ernestoo2&show_icons=true&theme=radical)
+![Your GitHub stats](./images/stats.svg)
 
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Ernestoo2&layout=compact&theme=radical)
+![Top Languages](./images/langs.svg)
 
 ### 🎓 Certifications & Training
 - ALX Front-end Web Development
