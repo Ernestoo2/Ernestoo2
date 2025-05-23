@@ -4,7 +4,9 @@
   "description": "<p align=\"center\">\r   <a href=\"https://www.linkedin.com/in/ernestoo2\">\r     <img src=\"https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin\" alt=\"LinkedIn\" />\r   </a>\r   <a href=\"https://catfish-app-phi.vercel.app/\">\r     <img src=\"https://img.shields.io/badge/Portfolio-Visit-green?style=for-the-badge&logo=google-chrome\" alt=\"Portfolio\" />\r   </a>\r   <a href=\"mailto:ezechibuezeernest@gmail.com\">\r     <img src=\"https://img.shields.io/badge/Email-Contact-red?style=for-the-badge&logo=gmail\" alt=\"Email\" />\r   </a>\r </p>",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "lint": "eslint . --cache",
+    "lint:fix": "eslint . --fix"
   },
   "repository": {
     "type": "git",

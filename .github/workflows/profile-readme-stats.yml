@@ -1,41 +1,39 @@
 name: GitHub Profile Stats
 
-# Prevents multiple workflow runs from racing
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
 on:
   schedule:
     - cron: '0 0 * * *'  # Runs at 00:00 UTC every day
   push:
     branches: [ "main" ]
-    paths:
-      - 'README.md'
-      - '.github/workflows/profile-readme-stats.yml'
   workflow_dispatch:  # Allows manual trigger
+
+permissions:
+  contents: write
+  packages: read
 
 jobs:
   update-readme:
     name: Update Profile README
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     
     steps:
-      # Checkout repository
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
-
-      # Update GitHub Stats
-      - name: GitHub Stats Card
-        uses: anuraghazra/github-readme-stats@master
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          username: Ernestoo2
-          show_icons: true
-          theme: radical
+      
+      - name: Generate GitHub Stats Images
+        run: |
+          curl -L "https://github-readme-stats.vercel.app/api?username=Ernestoo2&show_icons=true&theme=radical" -o stats.svg
+          curl -L "https://github-readme-stats.vercel.app/api/top-langs/?username=Ernestoo2&layout=compact&theme=radical" -o langs.svg
+          
+      - name: Commit and push if changed
+        run: |
+          git config --global user.email "ezechibuezeernest@gmail.com"
+          git config --global user.name "Eze Ernest Chibueze"
+          git add stats.svg langs.svg
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update GitHub stats" && git push)# Update GitHub Stats
+      - name: Generate GitHub Stats
+        run: |
+          curl -X GET "https://github-readme-stats.vercel.app/api?username=Ernestoo2&show_icons=true&theme=radical" -o stats.svg
+          curl -X GET "https://github-readme-stats.vercel.app/api/top-langs/?username=Ernestoo2&layout=compact&theme=radical" -o languages.svg
           
       # Generate snake animation
       - name: Generate Snake Animation
