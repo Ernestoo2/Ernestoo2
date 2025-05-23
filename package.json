@@ -1,0 +1,28 @@
+{
+  "name": "ernestoo2",
+  "version": "1.0.0",
+  "description": "<p align=\"center\">\r   <a href=\"https://www.linkedin.com/in/ernestoo2\">\r     <img src=\"https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin\" alt=\"LinkedIn\" />\r   </a>\r   <a href=\"https://catfish-app-phi.vercel.app/\">\r     <img src=\"https://img.shields.io/badge/Portfolio-Visit-green?style=for-the-badge&logo=google-chrome\" alt=\"Portfolio\" />\r   </a>\r   <a href=\"mailto:ezechibuezeernest@gmail.com\">\r     <img src=\"https://img.shields.io/badge/Email-Contact-red?style=for-the-badge&logo=gmail\" alt=\"Email\" />\r   </a>\r </p>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ernestoo2/Ernestoo2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Ernestoo2/Ernestoo2/issues"
+  },
+  "homepage": "https://github.com/Ernestoo2/Ernestoo2#readme",
+  "devDependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.1",
+    "eslint": "^9.27.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.5.3"
+  }
+}
